@@ -72,7 +72,8 @@ class PeerInvoker {
           this.logger.debug('Request', {
             url: req.url,
             statusCode: res ? res.statusCode : 'unknown',
-            err: err || res.body.error
+            // err: err || res.body.error
+            err: err || (res.body && res.body.error)
           })
 
           if (err && (err.code === 'ETIMEDOUT' || err.code === 'ESOCKETTIMEDOUT' || err.code === 'ECONNREFUSED')) {
